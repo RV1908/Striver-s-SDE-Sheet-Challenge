@@ -7,12 +7,12 @@ double myPow(double x, int n) {
         }
 
         while(nn){   
-            //even no hone se agar no ko usi no se multiply karo aur nn/2 kar do
+            //even power hone se agar no ko usi no se multiply karo aur nn/2 kar do
             if(nn%2==0){
                 x=x*x;
                 nn=nn/2;
             }
-            //odd no h to x ko ans se multiply karo and nn ko desc karo
+            //odd power h to x ko ans se multiply karo and nn ko desc karo
             else{      
                 ans = ans*x;
                 nn = nn-1;
