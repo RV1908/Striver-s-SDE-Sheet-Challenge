@@ -1,4 +1,49 @@
 Node* copyRandomList(Node* head) {
+        //APPROACH ONE
+        /*using map tc-O(n), sc-O(n)*/
+
+
+LinkedListNode<int> *cloneRandomList(LinkedListNode<int> *head)
+{
+    map<LinkedListNode<int> *,LinkedListNode<int> *> mp;
+    //map of original node to its clone node
+    
+    LinkedListNode<int> *temp = head;
+    
+    while(temp!=NULL){
+        LinkedListNode<int> * nodey = new LinkedListNode<int>(temp->data);
+        mp[temp]=nodey;
+        temp=temp->next;
+    }
+
+    temp=head;
+    while(temp!=NULL){
+        if(temp->next){
+            mp[temp]->next = temp->next;
+        } 
+        else{
+            mp[temp]->next=NULL;
+        }
+
+        if(temp->random){
+            mp[temp]->random = temp->random;
+        }
+        else{
+            mp[temp]->random = NULL;
+        }
+
+        temp=temp->next;
+    }
+
+    LinkedListNode<int> * ans = mp[head];
+    
+    return ans;
+}
+
+
+        
+
+        //APPROACH TWO
         /*TC-O(n) and SC-O(1)
         1. we create a deep copy node and insert it in between of original nodes
            such that original--copy--original--copy--NULL is attained
